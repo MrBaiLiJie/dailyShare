@@ -22,3 +22,30 @@
     		return result
     	}
 ```
+
+## **随机打乱数组:**
+
+```
+// Math.round() 函数返回一个数字四舍五入后最接近的整数。
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+		//生成一个随机正负数
+		//排序
+		arr.sort(() => {
+			return Math.round(Math.random()) - 0.5;    //返回随机值（大于0|小于0）
+		})
+		console.log(arr);
+```
+
+```
+  var Arr = [4,1,67,12,45,121,3];
+		function randArr(arr) {
+		    for (var i = 0; i < arr.length; i++) {
+		        var iRand = parseInt(arr.length * Math.random());
+		        var temp = arr[i];
+		        arr[i] = arr[iRand];
+		        arr[iRand] = temp;
+		    }
+		    return arr;
+		}
+		console.log(randArr(Arr));
+```
