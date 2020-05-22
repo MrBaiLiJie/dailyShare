@@ -1,3 +1,28 @@
+## **循环遍历数组:**
+
+```
+var array = ["山东","山西","河南","陕西","安徽",];
+var newArray = "";
+for (var i = 0; i < array.length; i++) {
+    newArray += array[i] + ""
+  }
+console.log(newArray)   //山东山西河南陕西安徽
+```
+
+## **遍历二维数组:**
+
+```
+// 遍历二维数组
+ var array = [["山东","山西"],["河南","陕西"],["安徽","江苏"]]
+ var newArray = "";
+ for (var i = 0; i < array.length; i++) {
+      for (var j = 0; j < array[i].length; j++) {
+         newArray += array[i][j] + ""
+   }
+ }
+ console.log(newArray)    //山东山西河南陕西安徽江苏
+```
+
 ## **随机抽奖程序：思路一**
 
 **接收一个数组，从数组中抽出 n 个人。**
@@ -23,7 +48,7 @@
     	}
 ```
 
-## **随机打乱数组**
+## **随机打乱数组:**
 
 ```
 // Math.round() 函数返回一个数字四舍五入后最接近的整数。
