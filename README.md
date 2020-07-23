@@ -109,6 +109,22 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 ````
 
 
+## **判断浏览器类型:**
+
+```
+browserType:function(){
+  var browser = window.navigator.userAgent; *//获取浏览器*
+  if (userAgent.indexOf("Opera") > -1)
+      { return "Opera" }; *//判断是否Opera浏览器*
+  if (userAgent.indexOf("Firefox") > -1)
+      { return "FireFox";  } *//判断是否Firefox浏览器*
+  if (userAgent.indexOf("Chrome") > -1)
+      {  return "Chrome";  }  *//判断是否chrome浏览器*
+  if (userAgent.indexOf("Safari") > -1)
+      { return "Safari"; } *//判断是否Safari浏览器* •
+  if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera)
+      {  return "IE";  }; *//判断是否IE浏览器* }
+```
 ## **获取当前浏览器是 ie 几 :**
 
 ```
@@ -123,8 +139,6 @@ function IEVersion(newsVsesion) {
         reIE.test(userAgent);
         var newsVsesion = parseFloat(RegExp["$1"]);
         // console.log(newsVsesion)
-
-
     }
     else{
     }
