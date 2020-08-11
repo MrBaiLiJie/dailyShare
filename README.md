@@ -75,6 +75,69 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 		console.log(randArr(Arr));
 ```
 
+## **判断数组中是否所有项都满足某条件 :**
+
+```
+// 判断条件：所有的水果都必须是红色
+	const fruits = [
+	{ name: 'apple', color: 'red' },
+	{ name: 'banana', color: 'yellow' },
+	{ name: 'grape', color: 'purple' }
+	];
+     judge();
+
+	1.// function judge() {
+	// 	let allFruitsRed = true;
+	// 	for (let f of fruits) {
+	// 		allFruitsRed = (f.color === 'red');
+ //            if (!allFruitsRed) break;
+	// 	}
+	// 	console.log(allFruitsRed)    // false
+	// };
+
+     2.// 使用 Array.every
+     // every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。
+     // every() 方法使用指定函数检测数组中的所有元素：
+     // 如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。
+     // 如果所有元素都满足条件，则返回 true。
+     // 注意： every() 不会对空数组进行检测。
+     // 注意： every() 不会改变原始数组。
+     function judge() {
+		let allFruitsRed = true;
+			for (let f of fruits) {
+			allFruitsRed = fruits.every(f => f.color == 'red')
+		}
+		console.log(allFruitsRed)  // false
+
+	};
+```
+
+## **判断数组中是否有某一项满足条件:**
+
+```
+ // 判断条件：所有的水果中有一项是红色
+	const fruits = [
+	{ name: 'apple', color: 'red' },
+	{ name: 'banana', color: 'yellow' },
+	{ name: 'grape', color: 'purple' }
+	];
+    judge();
+   // some() 方法用于检测数组中的元素是否满足指定条件（函数提供）。
+   // some() 方法会依次执行数组的每个元素：
+   // 如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。
+   // 如果没有满足条件的元素，则返回false。
+   // 注意： some() 不会对空数组进行检测。
+   // 注意： some() 不会改变原始数组。
+	function judge() {
+		let allFruitsRed = true;
+			for (let f of fruits) {
+			allFruitsRed = fruits.some(f => f.color == 'red')
+		}
+		console.log(allFruitsRed)   //true
+
+	};
+```
+
 ## **日期转化:**
 
 ````
@@ -108,7 +171,6 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 ````
 
-
 ## **判断浏览器类型:**
 
 ```
@@ -125,6 +187,7 @@ browserType:function(){
   if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera)
       {  return "IE";  }; *//判断是否IE浏览器* }
 ```
+
 ## **获取当前浏览器是 ie 几 :**
 
 ```
