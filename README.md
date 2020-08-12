@@ -138,6 +138,40 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 	};
 ```
 
+## **查找第一个符合条件的数组元素:**
+
+```
+// find()方法用于查找第一个符合条件的数组元素.它的参数是一个回调函数。在回调函数中可以写你要查找元素的条件，当条件成立为true时，返回该元素。如果没有符合条件的元素，返回值为undefined。
+//注意: find() 对于空数组，函数是不会执行的。
+//注意: find() 并没有改变数组的原始值。
+  const fruits = [
+	{ name: 'apple', color: 'red',num:1 },
+	{ name: 'banana', color: 'yellow',num:2 },
+	{ name: 'grape', color: 'purple',num:3 },
+  { name: 'orange', color: 'purple',num:3 }
+	];
+	const arr = [1,2,3,4,5,6,7];
+  //以下代码在arr数组中查找元素值大于1的元素，找到后立即返回。返回的结果为查找到的元素：
+  var resultArr = arr.find(f => f >1);
+  console.log(resultArr)  // 2
+  //没有符合元素，返回undefined:
+  var resultArr = arr.find(f => f >8);
+  console.log(resultArr)  // undefined 
+  // 回调函数有三个参数。value：当前的数组元素。index：当前索引值。fruits：被查找的数组。
+ // 查找索引值为2的元素：
+	var result = fruits.find((value,index,fruits) => {
+		return index == 2
+	});
+	console.log(result)  // {name: "grape", color: "purple", num: 3}
+  
+findIndex()
+findIndex()与find()的使用方法相同，只是当条件为true时findIndex()返回的是索引值，而find()返回的是元素。如果没有符合条件元素时findIndex()返回的是-1，而find()返回的是undefined。findIndex()当中的回调函数也是接收三个参数，与find()相同。
+  var resultArr = fruits.findIndex(f => f.num == 3);
+  console.log(resultArr)  // 2
+  var resultArr = fruits.findIndex(f => f.num == 8);
+  console.log(resultArr)  // -1
+```
+
 ## **日期转化:**
 
 ````
