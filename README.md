@@ -156,20 +156,51 @@ var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   console.log(resultArr)  // 2
   //没有符合元素，返回undefined:
   var resultArr = arr.find(f => f >8);
-  console.log(resultArr)  // undefined 
+  console.log(resultArr)  // undefined
   // 回调函数有三个参数。value：当前的数组元素。index：当前索引值。fruits：被查找的数组。
  // 查找索引值为2的元素：
 	var result = fruits.find((value,index,fruits) => {
 		return index == 2
 	});
 	console.log(result)  // {name: "grape", color: "purple", num: 3}
-  
+
 findIndex()
 findIndex()与find()的使用方法相同，只是当条件为true时findIndex()返回的是索引值，而find()返回的是元素。如果没有符合条件元素时findIndex()返回的是-1，而find()返回的是undefined。findIndex()当中的回调函数也是接收三个参数，与find()相同。
   var resultArr = fruits.findIndex(f => f.num == 3);
   console.log(resultArr)  // 2
   var resultArr = fruits.findIndex(f => f.num == 8);
   console.log(resultArr)  // -1
+```
+
+## **Array 其他方法**
+
+```
+ 1.array.filter()
+ filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。
+ 注意： filter() 不会对空数组进行检测。
+ 注意： filter() 不会改变原始数组。
+ 	const fruits = [
+	{ name: 'apple', color: 'red',num:1 },
+	{ name: 'banana', color: 'yellow',num:2 },
+	{ name: 'grape', color: 'purple',num:3 },
+	{ name: 'orange', color: 'purple',num:3 }
+	];
+	const arr = [1,2,3,4,5,6,7];
+  const resultArr = fruits.filter(f => f.num >2);
+  console.log(resultArr)  // 返回指定数组中符合条件的所有元素。
+  // 0: {name: "grape", color: "purple", num: 3}1: {name: "orange", color: "purple", num: 3}
+
+  2.array.join()
+  join()方法用于把数组中的所有元素转换一个字符串。
+  元素是通过制定的分隔符进行分割的。
+  const arr = [1,2,3,4,5,6,7];
+  const resultArr = arr.join('and');
+  console.log(resultArr)   // 1and2and3and4and5and6and7
+  3.array.reverse()
+  reverse() 方法用于颠倒数组中元素的顺序。
+  const arr = [1,2,3,4,5,6,7];
+  const resultArr = arr.reverse();
+  console.log(resultArr)   //[7, 6, 5, 4, 3, 2, 1]
 ```
 
 ## **日期转化:**
