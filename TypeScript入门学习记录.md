@@ -65,7 +65,40 @@ tsc -v
 
 ```
 编译一个 TypeScript 文件很简单：
+新建 一个ts文件（例如:index.ts，将代码复制到此文件中）:
+function sayHello(person: string) {  // 在 TypeScript 中，我们使用 : 指定变量的类型，: 的前后有没有空格都可以。
+    return 'Hello, ' + person;
+}
+let user = 'Tom';
+console.log(sayHello(user));
 
-tsc hello.ts
+然后运行命令：tsc index.ts
+这时候会生成一个编译好的文件 index.js：
+function sayHello(person) {
+    return 'Hello, ' + person;
+}
+var user = 'Tom';
+console.log(sayHello(user));
+
 我们约定使用 TypeScript 编写的文件以 .ts 为后缀，用 TypeScript 编写 React 时，以 .tsx 为后缀。
+```
+
+![](https://imgkr2.cn-bj.ufileos.com/aa88b1c1-4e60-46f8-b9cd-3a2131998d46.png?UCloudPublicKey=TOKEN_8d8b72be-579a-4e83-bfd0-5f6ce1546f13&Signature=n0HM67GHE0UkgZoJi52F9FFwJBs%253D&Expires=1597569865)
+
+```
+上述例子中，我们用 : 指定 person 参数类型为 string。但是编译为 js 之后，并没有什么检查的代码被插入进来。
+
+这是因为 TypeScript 只会在编译时对类型进行静态检查，如果发现有错误，编译的时候就会报错。而在运行时，与普通的 JavaScript 文件一样，不会对类型进行检查。
+
+如果我们需要保证运行时的参数类型，还是得手动对类型进行判断：
+function sayHello(person: string) {
+    if (typeof person === 'string') {
+        return 'Hello, ' + person;
+    } else {
+        throw new Error('person is not a string');
+    }
+}
+
+let user = 'Tom';
+console.log(sayHello(user));
 ```
