@@ -102,3 +102,23 @@ function sayHello(person: string) {
 let user = 'Tom';
 console.log(sayHello(user));
 ```
+
+## **TypeScript 基础类型:**
+
+```
+// Boolean 类型
+let isDone: boolean = false;
+// ES5：var isDone = false;
+// Number 类型
+let count: number = 10;
+// ES5：var count = 10;
+// String 类型
+let count: string = 'MrBai';
+// ES5：var count = 'MrBai';
+// Array 类型
+let list: number[] = [1, 2, 3];
+// ES5：var list = [1,2,3];
+let list: Array<number> = [1, 2, 3]; // Array<number>泛型语法
+// ES5：var list = [1,2,3];
+
+```
