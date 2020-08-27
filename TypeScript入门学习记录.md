@@ -120,5 +120,8 @@ let list: number[] = [1, 2, 3];
 // ES5：var list = [1,2,3];
 let list: Array<number> = [1, 2, 3]; // Array<number>泛型语法
 // ES5：var list = [1,2,3];
-
+// Null 和 Undefined
+在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：
+let u: undefined = undefined;
+let n: null = null;
 ```
