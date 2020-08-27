@@ -124,4 +124,22 @@ let list: Array<number> = [1, 2, 3]; // Array<number>泛型语法
 在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：
 let u: undefined = undefined;
 let n: null = null;
+与void的区别是，undefined 和 null 是所有类型的子类型，也就是说 undefined 类型的变量，可以赋值给 number类型的变量
+// 这样不会报错
+let num:number = undefined;
+// 这样也不会报错
+let u: undefined;
+let num:number = u;
+而 void 类型的变量不能赋值给 number 类型的变量：
+let u: void;
+let num: number = u;
+
+// Type 'void' is not assignable to type 'number'.
+// 空值
+JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void 表示没有任何返回值的函数：
+function alertName(): void {
+    alert('My name is Tom');
+}
+声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：
+let unusable: void = undefined;
 ```
