@@ -121,16 +121,16 @@ let list: number[] = [1, 2, 3];
 let list: Array<number> = [1, 2, 3]; // Array<number>泛型语法
 // ES5：var list = [1,2,3];
 // Null 和 Undefined
-在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：
+// 在 TypeScript 中，可以使用 null 和 undefined 来定义这两个原始数据类型：
 let u: undefined = undefined;
 let n: null = null;
-与void的区别是，undefined 和 null 是所有类型的子类型，也就是说 undefined 类型的变量，可以赋值给 number类型的变量
+// 与void的区别是，undefined 和 null 是所有类型的子类型，也就是说 undefined 类型的变量，可以赋值给 number类型的变量
 // 这样不会报错
 let num:number = undefined;
 // 这样也不会报错
 let u: undefined;
 let num:number = u;
-而 void 类型的变量不能赋值给 number 类型的变量：
+// 而 void 类型的变量不能赋值给 number 类型的变量：
 let u: void;
 let num: number = u;
 
@@ -140,6 +140,25 @@ JavaScript 没有空值（Void）的概念，在 TypeScript 中，可以用 void
 function alertName(): void {
     alert('My name is Tom');
 }
-声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：
+// 声明一个 void 类型的变量没有什么用，因为你只能将它赋值为 undefined 和 null：
 let unusable: void = undefined;
 ```
+## **TypeScript 任意值:**
+````
+// 任意值（Any）用来表示允许赋值为任意类型。
+let myFavoriteNumber: any = 'seven';
+myFavoriteNumber = 7;
+// 如果是一个普通类型，在赋值过程中改变类型是不被允许的：
+let myFavoriteNumber:string = "seven";
+myFavoriteNumber = 8
+// index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.
+// 任意值的属性和方法 在任意值上访问任何属性都是允许的：
+let anyThing:any = "hello";
+console.log(anyThing.myName)
+// 也允许调用任何方法：
+let anyThing:any = "MrBai"
+anyThing.setName('Jerry')
+anyThing.setName('Jerry').sayHello();
+anyThing.myName.setFirstName('Cat');
+// 可以认为，声明一个变量为任意值之后，对它的任何操作，返回的内容的类型都是任意值。
+````
