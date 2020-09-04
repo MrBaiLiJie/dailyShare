@@ -394,7 +394,7 @@ tom.id = 9527;
 
 注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候：
 
-interface Person {
+interface Person { 
     readonly id: number;
     name: string;
     age?: number;
@@ -411,6 +411,26 @@ tom.id = 89757;
 // index.ts(8,5): error TS2322: Type '{ name: string; gender: string; }' is not assignable to type 'Person'.
 //   Property 'id' is missing in type '{ name: string; gender: string; }'.
 // index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
-上例中，报错信息有两处，第一处是在对 tom 进行赋值的时候，没有给 id 赋值。
-第二处是在给 tom.id 赋值的时候，由于它是只读属性，所以报错了。
+//上例中，报错信息有两处，第一处是在对 tom 进行赋值的时候，没有给 id 赋值。
+//第二处是在给 tom.id 赋值的时候，由于它是只读属性，所以报错了。
+````
+## **数组的类型:**
+````
+在 TypeScript 中，数组类型有多种定义方式，比较灵活。
+「类型 + 方括号」表示法
+最简单的方法是使用「类型 + 方括号」来表示数组：
+
+let fibonacci: number[] = [1, 1, 2, 3, 5];
+数组的项中不允许出现其他的类型：
+
+let fibonacci: number[] = [1, '1', 2, 3, 5];
+
+// Type 'string' is not assignable to type 'number'.
+数组的一些方法的参数也会根据数组在定义时约定的类型进行限制：
+
+let fibonacci: number[] = [1, 1, 2, 3, 5];
+fibonacci.push('8');
+
+// Argument of type '"8"' is not assignable to parameter of type 'number'.
+上例中，push 方法只允许传入 number 类型的参数，但是却传了一个 "8" 类型的参数，所以报错了。这里 "8" 是一个字符串字面量类型，会在后续章节中详细介绍。
 ````
