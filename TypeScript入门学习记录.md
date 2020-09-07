@@ -328,8 +328,9 @@ let tom: Person = {
 
 // examples/playground/index.ts(9,5): error TS2322: Type '{ name: string; age: number; gender: string; }' is not assignable to type 'Person'.
 //   Object literal may only specify known properties, and 'gender' does not exist in type 'Person'.
-````
-````
+```
+
+```
 任意属性:有时候我们希望一个接口允许有任意的属性，可以使用如下方式：
 interface Person {
     name:string;
@@ -353,9 +354,11 @@ let tom: Person = {
     age: 25,
     gender: 'male'
 };
-````
+```
+
 **需要注意的是，一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集：**
-````
+
+```
 interface Person {
     name: string;
     age?: number;
@@ -374,9 +377,11 @@ let tom: Person = {
 
 上例中，任意属性的值允许是 string，但是可选属性 age 的值却是 number，number 不是 string 的子属性，所以报错了。
 另外，在报错信息中可以看出，此时 { name: 'Tom', age: 25, gender: 'male' } 的类型被推断成了 { [x: string]: string | number; name: string; age: number; gender: string; }，这是联合类型和接口的结合。
-````
+```
+
 **只读属性:有时候我们希望对象中的一些字段只能在创建的时候被赋值，那么可以用 readonly 定义只读属性：**
-````
+
+```
 interface Person {
     readonly id: number;
     name: string;
@@ -394,7 +399,7 @@ tom.id = 9527;
 
 注意，只读的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候：
 
-interface Person { 
+interface Person {
     readonly id: number;
     name: string;
     age?: number;
@@ -413,24 +418,34 @@ tom.id = 89757;
 // index.ts(13,5): error TS2540: Cannot assign to 'id' because it is a constant or a read-only property.
 //上例中，报错信息有两处，第一处是在对 tom 进行赋值的时候，没有给 id 赋值。
 //第二处是在给 tom.id 赋值的时候，由于它是只读属性，所以报错了。
-````
+```
+
 ## **数组的类型:**
-````
-在 TypeScript 中，数组类型有多种定义方式，比较灵活。
-「类型 + 方括号」表示法
-最简单的方法是使用「类型 + 方括号」来表示数组：
 
-let fibonacci: number[] = [1, 1, 2, 3, 5];
+```
+在 TypeScript 中，数组类型有多种定义方式，比较灵活:
+*「类型 + 方括号」表示法 : let fibonacci:number[] = [1,2,3,4,5]
+
 数组的项中不允许出现其他的类型：
-
 let fibonacci: number[] = [1, '1', 2, 3, 5];
-
 // Type 'string' is not assignable to type 'number'.
-数组的一些方法的参数也会根据数组在定义时约定的类型进行限制：
 
+数组的一些方法的参数也会根据数组在定义时约定的类型进行限制：
 let fibonacci: number[] = [1, 1, 2, 3, 5];
 fibonacci.push('8');
-
 // Argument of type '"8"' is not assignable to parameter of type 'number'.
-上例中，push 方法只允许传入 number 类型的参数，但是却传了一个 "8" 类型的参数，所以报错了。这里 "8" 是一个字符串字面量类型，会在后续章节中详细介绍。
-````
+上例中，push 方法只允许传入 number 类型的参数，但是却传了一个 "8" 类型的参数，所以报错了。这里 "8" 是一个字符串字面量类型.
+
+*数组泛型:我们也可以使用数组泛型（Array Generic） Array<elemType> 来表示数组:
+let fibonacci:Array<number> = [1,2,3,4,5];
+
+*用接口表示数组:
+interface NumberArray{
+[index:number]:number
+}
+let fibonacci:NumberArray = [1,2,3,4,5];
+NumberArray 表示：只要索引的类型是数字时，那么值的类型必须是数字。
+//虽然接口也可以用来描述数组，但是我们一般不会这么做，因为这种方式比前两种方式复杂多了。
+
+
+```
