@@ -527,7 +527,9 @@ let muFun:(x:number,y:number) => number = function(x:number,y:number):number{
 在 TypeScript 的类型定义中，=> 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。
 在 ES6 中，=> 叫做箭头函数。
 ```
+
 ## **用接口定义函数的形状：**
+
 ```
 interface fun{
     (source:string,subString:string):boolean;
@@ -536,4 +538,33 @@ let myFun:fun;
 myFun = function(source:string,subString:string){
      return source.search(subString)!== -1
 }
+采用函数表达式|接口定义函数的方式时，对等号左侧进行类型限制，可以保证以后对函数名赋值时保证参数个数、参数类型、返回值类型不变。
+```
+
+## **可选参数：**
+
+```
+前面提到，输入多余的（或者少于要求的）参数，是不允许的。那么如何定义可选的参数呢？
+与接口中的可选属性类似，我们用 ? 表示可选的参数：
+function myName(firstName:string,lastName?:string){
+   if(firstName){
+       return firstName + '' +lastName;
+   }else{
+       return lastName;
+   }
+}
+let baiGood = myName('Bai', 'good');
+let bai = myName('Bai');
+
+*需要注意的是，可选参数必须接在必需参数后面。换句话说，可选参数后面不允许再出现必需参数了：
+function myName(lastName?:string,firstName:string){
+   if(firstName){
+       return firstName + '' +lastName;
+   }else{
+       return lastName;
+   }
+}
+let baiGood = myName('Bai', 'good');
+let bai = myName(undefined,'Bai');
+// index.ts(1,40): error TS1016: A required parameter cannot follow an optional parameter.
 ```
