@@ -568,3 +568,27 @@ let baiGood = myName('Bai', 'good');
 let bai = myName(undefined,'Bai');
 // index.ts(1,40): error TS1016: A required parameter cannot follow an optional parameter.
 ```
+
+## **剩余参数：**
+
+```
+ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数（rest 参数）：
+function push(any,...items){
+    items.forEach(function(item){
+        array.push(item)
+    })
+}
+let a:any[] = [];
+push(a,1,2,3)
+
+items 是一个数组。所以我们可以用数组的类型来定义它：
+function push(array:any[],...items:any[]){
+    items.forEach(function(item){
+        array.push(item)
+    })
+}
+let a = [];
+push(a, 1, 2, 3);
+
+*注意，rest 参数只能是最后一个参数，关于 rest 参数，可以参考 ES6 中的 rest 参数。
+```
