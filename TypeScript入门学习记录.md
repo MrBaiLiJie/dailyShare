@@ -573,44 +573,48 @@ let bai = myName(undefined,'Bai');
 
 ```
 ES6 中，可以使用 ...rest 的方式获取函数中的剩余参数（rest 参数）：
-function push(any,...items){
-    items.forEach(function(item){
-        array.push(item)
-    })
+function push(array, ...items) {
+    items.forEach(function(item) {
+        array.push(item);
+
+    });
+     console.log(array)  // [1,2,3,]
 }
-let a:any[] = [];
-push(a,1,2,3)
+
+let a: any[] = [];
+push(a, 1, 2, 3);
 
 items 是一个数组。所以我们可以用数组的类型来定义它：
-function push(array:any[],...items:any[]){
-    items.forEach(function(item){
-        array.push(item)
-    })
+function push2(array: any[], ...items: any[]) {
+    items.forEach(function(item) {
+        array.push(item);
+    });
+    console.log(array)   // [1,2,3,6]
 }
-let a = [];
-push(a, 1, 2, 3);
+
+let b = [];
+push2(b, 1, 2, 3,6);
 
 *注意，rest 参数只能是最后一个参数，关于 rest 参数，可以参考 ES6 中的 rest 参数。
 ```
+
 ## **重载：**
+
 ```
 重载允许一个函数接受不同数量或类型的参数时，作出不同的处理。
 比如，我们需要实现一个函数 reverse，输入数字 123 的时候，输出反转的数字 321，输入字符串 'hello' 的时候，输出反转的字符串 'olleh'。
 利用联合类型，我们可以这么实现：
 function reverse(x:number|string):number|string{
-    if(typeof x ==
-}
-function reverse(x: number | string): number | string {
-    if (typeof x === 'number') {
-        return Number(x.toString().split('').reverse().join(''));
-    } else if (typeof x === 'string') {
-        return x.split('').reverse().join('');
+    if(typeof x === 'number'){
+       return Number(x.toString().split('').reverse().join(''))
+    }else if(typeof x === 'string'){
+       return x.split('').reverse().join('')
     }
 }
+console.log(reverse('BaiLiJie'));  //eiJiLiaB
 然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。
 
 这时，我们可以使用重载定义多个 reverse 的函数类型：
-
 function reverse(x: number): number;
 function reverse(x: string): string;
 function reverse(x: number | string): number | string {
@@ -620,7 +624,19 @@ function reverse(x: number | string): number | string {
         return x.split('').reverse().join('');
     }
 }
+console.log(reverse('BaiLiJie'));  //eiJiLiaB
+
+function fun(x:number):number;
+function fun(x:string):string;
+function fun(x:number|string):number|string{
+	if (typeof x === 'number') {
+        return Number(x.toString().split('').reverse().join(''));
+    } else if (typeof x === 'string') {
+        return x.split('').reverse().join('');
+    }
+}
+console.log(fun(987654321))   // 123456789
 上例中，我们重复定义了多次函数 reverse，前几次都是函数定义，最后一次是函数实现。在编辑器的代码提示中，可以正确的看到前两个提示。
 
-注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
+*注意，TypeScript 会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。
 ```
